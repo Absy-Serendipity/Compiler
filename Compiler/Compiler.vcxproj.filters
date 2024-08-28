@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Node">
+      <UniqueIdentifier>{d3f9174f-ccd9-41fc-9afc-aea7bbae4186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LexicalAnalyzer">
+      <UniqueIdentifier>{413c0144-985a-414a-a18d-ccc79fcf39be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SyntaxAnalyzer">
+      <UniqueIdentifier>{b0f245ee-dc9d-42ee-9bd5-b95b0f0c26d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SymbolTable">
+      <UniqueIdentifier>{426e0a02-cbf6-48a5-bf5e-c8490a1cb4d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Compiler.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeFactory.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="LexicalAnalyzer.cpp">
+      <Filter>LexicalAnalyzer</Filter>
+    </ClCompile>
+    <ClCompile Include="SyntaxAnalyzer.cpp">
+      <Filter>SyntaxAnalyzer</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionSignature.cpp">
+      <Filter>SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="ScopedSymbolTable.cpp">
+      <Filter>SymbolTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Code.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminal.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="VDeclaration.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="SignOperation.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="FDeclaration.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryExpression.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Assign.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Argument.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyNode.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionCall.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="IfStatement.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicExpression.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Parameter.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="PostfixExpression.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="PrefixExpression.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="WhileStatement.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolTable.cpp">
+      <Filter>SymbolTable</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NodeFactory.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="LexicalAnalyzer.h">
+      <Filter>LexicalAnalyzer</Filter>
+    </ClInclude>
+    <ClInclude Include="SyntaxAnalyzer.h">
+      <Filter>SyntaxAnalyzer</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionSignature.h">
+      <Filter>SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="ScopedSymbolTable.h">
+      <Filter>SymbolTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminal.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Code.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="VDeclaration.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="SignOperation.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="FDeclaration.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryExpression.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Assign.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Argument.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyNode.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionCall.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="IfStatement.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicExpression.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="PostfixExpression.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="PrefixExpression.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameter.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="WhileStatement.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="eDataType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="eOperator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolTable.h">
+      <Filter>SymbolTable</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
