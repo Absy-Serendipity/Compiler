@@ -1,9 +1,13 @@
-<center> <span style="font-size:250%"> Compiler of Simplified C Language</span>  </center> 
+# Compiler of Simplified C Language 
 
-<br>
-<center> <span style="font-size:180%"> Abstract </span> </center>
+
+## Abstract
 
 This project’s objective is to implement a compiler for a **simplified C language**. This compiler supports the following features: identifiers for **variables** and **functions**; types for **signed integers**, **characters**, and **booleans**; keywords for **true**, **false**, **if**, **else** and **while**; and operators for **comparisons**, **addition**, **subtraction**, **multiplication**, **division**, **unary addition**, and **unary subtraction**.
+
+
+
+
 
 # **Contents**
 1. **Lexical Analyzer**
@@ -41,7 +45,7 @@ The **Lexical Analyzer** takes an input string, splits it into tokens (smallest 
 
 **Regular expression** : (\_|letter)(\_|letter|digit)\*
 
-**Examples** : _ ,_abc123, abc123_, abc_123_ …
+**Examples** : \_ ,\_abc123, abc123_, abc_123_ …
 
 
 ### **Type**
