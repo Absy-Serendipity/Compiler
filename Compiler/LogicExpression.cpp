@@ -2,7 +2,8 @@
 
 void LogicExpression::Print(const int indentCount) const
 {
-    for (int i = 0; i < indentCount; i++) {
+    for (int i = 0; i < indentCount; i++) 
+    {
         std::cout << INDENT;
     }
     std::cout << STRING_SYMOL_NAMES.at(GetName());
@@ -14,4 +15,10 @@ void LogicExpression::Print(const int indentCount) const
 eDataType LogicExpression::CheckWellFormedness(ScopedSymbolTable* localSymbolTable) const
 {
     return mCondition->CheckWellFormedness(localSymbolTable);
+}
+
+void LogicExpression::Destroy()
+{
+	mCondition->Destroy();
+    delete this;
 }

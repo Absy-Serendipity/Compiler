@@ -1,13 +1,15 @@
 #pragma once
 #include "Node.h"
 
-class IfStatement : public Node
+class IfStatement final : public Node
 {
 public:
-    IfStatement(Node* condition, Node* block, Node* mElseStatement) : Node(eSymbolName::If), mCondition(condition), mBlock(block), mElseStatement(mElseStatement) {}
+    IfStatement(Node*, Node*, Node*);
+    ~IfStatement() override = default;
 
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
+	void Destroy() override;
 
 private:
     Node* mCondition;

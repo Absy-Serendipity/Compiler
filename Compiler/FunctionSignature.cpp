@@ -1,5 +1,13 @@
 #include "FunctionSignature.h"
 
+FunctionSignature::FunctionSignature() 
+	: mReturnType(eDataType::Void) 
+{}
+
+FunctionSignature::FunctionSignature(const eDataType returnType, const std::vector<eDataType>& parameterTypes)
+	: mReturnType(returnType)
+	, mParameterTypes(parameterTypes) 
+{}
 
 void FunctionSignature::AddParameterType(const eDataType parameterType)
 {

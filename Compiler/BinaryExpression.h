@@ -1,17 +1,15 @@
 #pragma once
 #include "Node.h"
 
-
-
-class BinaryExpression : public Node
+class BinaryExpression final : public Node
 {
 public:
-    BinaryExpression(const eSymbolName symbol, Node* leftOperand, const std::string& op, Node* rightOperand) :
-        Node(symbol), mLeftOperand(leftOperand), mOperator(OPERATORS.at(op)), mRightOperand(rightOperand) {}
-
+    BinaryExpression(const eSymbolName, Node*, const std::string&, Node*);
+    ~BinaryExpression() override = default;
 
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
+    void Destroy() override;
 
 private:
     Node* mLeftOperand;

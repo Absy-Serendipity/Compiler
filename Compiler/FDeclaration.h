@@ -3,14 +3,15 @@
 #include "Parameter.h"
 #include "VDeclaration.h"
 
-class FDeclaration : public Node
+class FDeclaration final: public Node
 {
 public:
     FDeclaration(const std::string&, const std::string&, Node*, Node*, Node*);
+    ~FDeclaration() override = default;
 
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
-
+	void Destroy() override;
     
 private:
     eDataType mReturnType;

@@ -1,11 +1,12 @@
 #pragma once
 #include "Node.h"
 
-class Terminal : public Node
+class Terminal final: public Node
 {
 public:
-    Terminal(const eSymbolName name, const std::string& value) : Node(name, value) {};
-    Terminal(const eSymbolName name) :Node(name) {};
+    Terminal(const eSymbolName, const std::string&);
+    Terminal(const eSymbolName);
+	~Terminal() = default;
 
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;

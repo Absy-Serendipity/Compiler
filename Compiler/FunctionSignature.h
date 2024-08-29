@@ -6,9 +6,9 @@
 class FunctionSignature
 {
 public:
-	FunctionSignature() : mReturnType(eDataType::Void) {};
-	FunctionSignature(eDataType returnType, const std::vector<eDataType>& parameterTypes) : 
-		mReturnType(returnType), mParameterTypes(parameterTypes) {}
+	FunctionSignature();
+	FunctionSignature(const eDataType, const std::vector<eDataType>&);
+	~FunctionSignature() = default;
 
 	void AddParameterType(const eDataType);
 	bool VerifyParameterTypes(const std::vector<eDataType>&) const;

@@ -1,14 +1,15 @@
 #pragma once
 #include "Node.h"
 
-class WhileStatement : public Node
+class WhileStatement final: public Node
 {
 public:
-    WhileStatement(Node* conditionStatement, Node* block) : Node(eSymbolName::While), mConditionStatement(conditionStatement), mBlock(block) {}
-    
+    WhileStatement(Node*, Node*);
+    ~WhileStatement() = default;
+
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
-
+	void Destroy() override;
 
 
 private:

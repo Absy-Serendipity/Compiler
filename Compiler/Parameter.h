@@ -1,15 +1,15 @@
 #pragma once
 #include "Node.h"
 
-class Parameter : public Node
+class Parameter final: public Node
 {
 public:
-    Parameter(eSymbolName symbol, const std::string& type, const std::string& identifier, Node* moreParameter) :
-        Node(symbol, identifier), mMoreParameter(moreParameter), mType(DATA_TYPES.at(type)) {}
+    Parameter(const eSymbolName, const std::string&, const std::string&, Node*);
+	~Parameter() override = default;
 
     eDataType GetType() const;
     Node* GetNextParameter() const;
-
+    
 private:
     eDataType mType;
     Node* mMoreParameter;

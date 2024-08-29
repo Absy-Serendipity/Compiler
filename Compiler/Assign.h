@@ -1,10 +1,11 @@
 #pragma once
 #include "Node.h"
 
-class Assign : public Node
+class Assign final: public Node
 {
 public:
-    Assign(const std::string& identifier, Node* expression) : Node(eSymbolName::ASSIGN, identifier), mExpression(expression) {}
+    Assign(const std::string&, Node*);
+    ~Assign() override = default;
 
     Node* GetExpression() const;
     void Print(const int) const override;

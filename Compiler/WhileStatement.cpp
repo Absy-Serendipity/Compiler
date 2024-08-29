@@ -1,5 +1,11 @@
 #include "WhileStatement.h"
 
+WhileStatement::WhileStatement(Node* conditionStatement, Node* block) 
+    : Node(eSymbolName::While)
+    , mConditionStatement(conditionStatement)
+    , mBlock(block) 
+{}
+
 
 void WhileStatement::Print(const int indentCount) const
 {
@@ -22,4 +28,11 @@ eDataType WhileStatement::CheckWellFormedness(ScopedSymbolTable* localSymbolTabl
     mBlock->CheckWellFormedness(localBlockSymbolTable);
 
     return eDataType::Void;
+}
+
+void WhileStatement::Destroy()
+{
+	mConditionStatement->Destroy();
+	mBlock->Destroy();
+	delete this;
 }

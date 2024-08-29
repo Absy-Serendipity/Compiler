@@ -1,6 +1,11 @@
 #include "Block.h"
 
 
+Block::Block() 
+    : Node(eSymbolName::BLOCK) 
+{}
+
+
 void Block::AddStatement(Node* childNode)
 {
     mStatements.push_back(childNode);
@@ -19,13 +24,15 @@ void Block::AddStatements(const std::vector<Node*>& statements)
 
 void Block::Print(const int indentCount) const
 {
-    for (int i = 0; i < indentCount; i++) {
+    for (int i = 0; i < indentCount; i++) 
+    {
         std::cout << INDENT;
     }
     std::cout << STRING_SYMOL_NAMES.at(GetName());
     std::cout << std::endl;
 
-    for (auto rit = mStatements.rbegin(); rit != mStatements.rend(); ++rit) {
+    for (auto rit = mStatements.rbegin(); rit != mStatements.rend(); ++rit) 
+    {
         (*rit)->Print(indentCount + 1);
     }
 }
@@ -33,8 +40,18 @@ void Block::Print(const int indentCount) const
 
 eDataType Block::CheckWellFormedness(ScopedSymbolTable* localSymbolTable) const
 {
-    for (auto rit = mStatements.rbegin(); rit != mStatements.rend(); ++rit) {
+    for (auto rit = mStatements.rbegin(); rit != mStatements.rend(); ++rit) 
+    {
         (*rit)->CheckWellFormedness(localSymbolTable);
     }
     return eDataType::Void;
+}
+
+void Block::Destroy()
+{
+	for (auto& statement : mStatements)
+	{
+		statement->Destroy();
+	}
+    delete this;
 }

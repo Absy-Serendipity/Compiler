@@ -1,9 +1,11 @@
 #include "FunctionCall.h"
 
-FunctionCall::FunctionCall(const std::string& identifier, Node* argument) : Node(eSymbolName::FUNC_CALL, identifier)
+FunctionCall::FunctionCall(const std::string& identifier, Node* argument) 
+    : Node(eSymbolName::FUNC_CALL, identifier)
 {
     Node* current = argument;
-    while (!current->Empty()) {
+    while (!current->Empty()) 
+    {
         const Argument* currentArgument = dynamic_cast<Argument*> (current);
 
         mArguments.push_back(currentArgument->GetExpression());
@@ -15,14 +17,16 @@ FunctionCall::FunctionCall(const std::string& identifier, Node* argument) : Node
 
 void FunctionCall::Print(const int indentCount) const
 {
-    for (int i = 0; i < indentCount; i++) {
+    for (int i = 0; i < indentCount; i++) 
+    {
         std::cout << INDENT;
     }
     std::cout << STRING_SYMOL_NAMES.at(GetName());
     std::cout << "-> ID : " << GetValue();
 
     std::cout << std::endl;
-    for (const auto argument : mArguments) {
+    for (const auto argument : mArguments) 
+    {
         argument->Print(indentCount + 1);
     }
 }
@@ -31,7 +35,8 @@ void FunctionCall::Print(const int indentCount) const
 eDataType FunctionCall::CheckWellFormedness(ScopedSymbolTable* localSymbolTable) const
 {
     std::vector<eDataType> argumentTypes;
-    for (const auto argument : mArguments) {
+    for (const auto argument : mArguments) 
+    {
         eDataType argumentType = argument->CheckWellFormedness(localSymbolTable);
         argumentTypes.push_back(argumentType);
     }
@@ -39,4 +44,13 @@ eDataType FunctionCall::CheckWellFormedness(ScopedSymbolTable* localSymbolTable)
     SymbolTable::GetInstance().ValidateArgumentTypes(GetValue(), argumentTypes);
 
     return SymbolTable::GetInstance().GetReturnType(GetValue());
+}
+
+void FunctionCall::Destroy()
+{
+	for (auto& argument : mArguments) 
+    {
+		argument->Destroy();
+	}
+	delete this;
 }

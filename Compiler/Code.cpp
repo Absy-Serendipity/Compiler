@@ -1,5 +1,11 @@
 #include "Code.h"
 
+
+Code::Code() 
+    : Node(eSymbolName::CODE) 
+{}
+
+
 void Code::AddDeclaration(Node* fDeclaration)
 {
     mFunctionDeclarations.push_back(fDeclaration);
@@ -39,4 +45,13 @@ eDataType Code::CheckWellFormedness(ScopedSymbolTable*) const
     }
 
     return eDataType::Void;
+}
+
+void Code::Destroy()
+{
+    for (auto& fDeclaration : mFunctionDeclarations) 
+    {
+        fDeclaration->Destroy();
+    }
+    delete this;
 }

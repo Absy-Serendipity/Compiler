@@ -1,10 +1,11 @@
 #pragma once
 #include "Node.h"
 
-class PrefixExpression : public Node
+class PrefixExpression final: public Node
 {
 public:
-    PrefixExpression(const std::string& op, std::string identifier) : Node(eSymbolName::UnaryOp, identifier), mSign(OPERATORS.at(op)) {}
+    PrefixExpression(const std::string&, const std::string&);
+	~PrefixExpression() override = default;
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
 

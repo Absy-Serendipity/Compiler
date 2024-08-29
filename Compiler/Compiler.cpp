@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "SyntaxAnalyzer.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -8,7 +7,8 @@ int main()
 {
     std::ifstream file("sample.c");
     
-    if (!file.is_open()) {
+    if (!file.is_open()) 
+    {
         std::cerr << "Failed to open the file." << std::endl;
         return 1;
     }
@@ -34,6 +34,7 @@ int main()
 
 	SymbolTable& symbolTable = SymbolTable::GetInstance();
 	symbolTable.Print();
+	syntaxTree->Destroy();
    
     return 0;
 }

@@ -6,8 +6,10 @@
 class SyntaxAnalyzer
 {
 public:
-	SyntaxAnalyzer() : mToken(nullptr) {}
-	Node* Analyze(LexicalAnalyzer& lexicalAnalyzer);
+	SyntaxAnalyzer();
+	~SyntaxAnalyzer() = default;
+
+	Node* Analyze(LexicalAnalyzer&);
 
 private:
 	bool implementAction();

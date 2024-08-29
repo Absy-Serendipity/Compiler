@@ -1,10 +1,12 @@
 #pragma once
 #include "Node.h"
 
-class EmptyNode : public Node
+class EmptyNode final: public Node
 {
 public:
-    EmptyNode(eSymbolName symbol) : Node(symbol) {}
+    EmptyNode(eSymbolName);
+    ~EmptyNode() override = default;
+
 public:
     bool Empty() const override;
     void Print(const int) const override;

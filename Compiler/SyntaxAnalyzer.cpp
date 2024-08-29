@@ -1,16 +1,22 @@
 #include "SyntaxAnalyzer.h"
 
+SyntaxAnalyzer::SyntaxAnalyzer()
+	: mToken(nullptr) 
+{}
 
 Node* SyntaxAnalyzer::Analyze(LexicalAnalyzer& lexicalAnalyzer)
 {
 	mStates.push(0);
-    while (true) {
+    while (true) 
+	{
 		mToken = lexicalAnalyzer.GetToken();
-        if (mToken->GetName() == eSymbolName::WhiteSpace) {
+        if (mToken->GetName() == eSymbolName::WhiteSpace) 
+		{
             continue;
         }
 
-        if (implementAction()) {
+        if (implementAction()) 
+		{
             std::cout << "Syntaxtic Analysis has succeeded\n" << std::endl;
             return mLeftSubstring.top();
         }
@@ -25,7 +31,8 @@ bool SyntaxAnalyzer::implementAction()
     const auto& itBehavior = SLR_TABLE.at(currentState).find(mToken->GetName());
 
 	// if there is no behavior for the current state and token
-	if (itBehavior == SLR_TABLE.at(currentState).end()) {
+	if (itBehavior == SLR_TABLE.at(currentState).end()) 
+	{
 		std::cout << "Unexpected Token: " << STRING_SYMOL_NAMES.at(mToken->GetName()) << std::endl;
 		exit(1);
 	}
@@ -67,7 +74,8 @@ bool SyntaxAnalyzer::reduce(const unsigned int targetRuleNumber)
     const std::vector<eSymbolName>& rhs = RHS_LIST.at(targetRuleNumber);
 
 
-    for (int i = 0; i < rhs.size(); i++) {
+    for (int i = 0; i < rhs.size(); i++) 
+	{
         mStates.pop();
     }
 
@@ -80,7 +88,8 @@ bool SyntaxAnalyzer::reduce(const unsigned int targetRuleNumber)
 
 
 
-const std::vector<eSymbolName> SyntaxAnalyzer::LHS_LIST = {
+const std::vector<eSymbolName> SyntaxAnalyzer::LHS_LIST = 
+{
 	eSymbolName::S,
 	eSymbolName::CODE,
 	eSymbolName::CODE,
@@ -132,7 +141,8 @@ const std::vector<eSymbolName> SyntaxAnalyzer::LHS_LIST = {
 	eSymbolName::ELSE,
 	eSymbolName::RETURN,
 };
-const std::vector<std::vector<eSymbolName>> SyntaxAnalyzer::RHS_LIST = {
+const std::vector<std::vector<eSymbolName>> SyntaxAnalyzer::RHS_LIST = 
+{
 	{eSymbolName::CODE},
 	{eSymbolName::FDECL , eSymbolName::CODE},
 	{},
@@ -184,7 +194,8 @@ const std::vector<std::vector<eSymbolName>> SyntaxAnalyzer::RHS_LIST = {
 	{},
 	{eSymbolName::Return , eSymbolName::EXPR , eSymbolName::Semi},
 };
-const std::vector<std::unordered_map<eSymbolName, std::string>> SyntaxAnalyzer::SLR_TABLE = {
+const std::vector<std::unordered_map<eSymbolName, std::string>> SyntaxAnalyzer::SLR_TABLE = 
+{
 	{{eSymbolName::Type, "s3"}, {eSymbolName::$, "r2"}, {eSymbolName::CODE, "1"}, {eSymbolName::FDECL, "2"}},
 	{{eSymbolName::$, "acc"}},
 	{{eSymbolName::Type, "s3"}, {eSymbolName::$, "r2"}, {eSymbolName::CODE, "4"}, {eSymbolName::FDECL, "2"}},

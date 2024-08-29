@@ -1,9 +1,16 @@
 #include "Condition.h"
 
+Condition::Condition(Node* conditionExpression, Node* logicExpression) 
+    : Node(eSymbolName::COND) 
+    , mConditionExpression(conditionExpression)
+    , mLogicExpression(logicExpression)
+{}
+
 
 void Condition::Print(const int indentCount) const
 {
-    for (int i = 0; i < indentCount; i++) {
+    for (int i = 0; i < indentCount; i++) 
+    {
         std::cout << INDENT;
     }
     std::cout << STRING_SYMOL_NAMES.at(GetName());
@@ -15,11 +22,20 @@ void Condition::Print(const int indentCount) const
 
 eDataType Condition::CheckWellFormedness(ScopedSymbolTable* localSymbolTable) const
 {
-    if (mConditionExpression->CheckWellFormedness(localSymbolTable) == eDataType::Bool) {
-        if (mLogicExpression->CheckWellFormedness(localSymbolTable) == eDataType::Bool || mLogicExpression->Empty()) {
+    if (mConditionExpression->CheckWellFormedness(localSymbolTable) == eDataType::Bool) 
+    {
+        if (mLogicExpression->CheckWellFormedness(localSymbolTable) == eDataType::Bool || mLogicExpression->Empty()) 
+        {
             return eDataType::Bool;
         }
     }
 
     throw std::runtime_error("Condition must be boolean");
+}
+
+void Condition::Destroy()
+{
+	mConditionExpression->Destroy();
+	mLogicExpression->Destroy();
+    delete this;
 }

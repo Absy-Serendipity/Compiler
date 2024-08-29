@@ -1,10 +1,12 @@
 #pragma once
 #include "Node.h"
 
-class Argument : public Node
+class Argument final : public Node
 {
 public:
-    Argument(eSymbolName symbol, Node* exprssion, Node* moreArgument) : Node(symbol), mExpression(exprssion), mMoreArgument(moreArgument) {}
+    Argument(const eSymbolName, Node*, Node*);
+    ~Argument() override = default;
+
     Node* GetExpression() const;
     Node* GetNextArgument() const;
 

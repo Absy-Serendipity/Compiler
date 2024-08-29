@@ -1,10 +1,13 @@
 #pragma once
 #include "Terminal.h"
+#include <memory>
 
 class LexicalAnalyzer
 {
 public:
-	LexicalAnalyzer(const std::string& Input) : mInput(Input), mCursor(0), mEndTermianl(Terminal(eSymbolName::$)) {}
+	LexicalAnalyzer(const std::string&);
+	~LexicalAnalyzer() = default;
+	 
 	Terminal* GetToken();
 
 private:

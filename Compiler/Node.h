@@ -9,7 +9,8 @@
 
 
 
-enum class eSymbolName {
+enum class eSymbolName 
+{
     // type
     Character, Integer, Boolean,
 	// syntactic symbols
@@ -28,20 +29,24 @@ enum class eSymbolName {
 };
 
 
-const std::unordered_map <std::string, eOperator> OPERATORS = {
+const std::unordered_map <std::string, eOperator> OPERATORS = 
+{
     {"+", ADD}, {"-", SUB},{"*", MUL},{"/", DIV},{"++", UNARY_ADD},{"--", UNARY_SUB},{"=", MOV},{"&", AND},
     {"|", OR}, {"==", Equal},{"!=", NotEqual},{"<", Less},{">", Greater},{"<=", LessEqual},{">=", GreaterEqual}
 };
-const std::unordered_map < std::string, eDataType> DATA_TYPES = {
+const std::unordered_map < std::string, eDataType> DATA_TYPES = 
+{
     {"int", eDataType::Int}, {"char", eDataType::Char},{"bool", eDataType::Bool},
 };
-const std::unordered_map<eOperator, std::string> STRING_OPERATORS = {
+const std::unordered_map<eOperator, std::string> STRING_OPERATORS = 
+{
     {ADD, "+"}, {SUB, "-"}, {MUL, "*"}, {DIV, "/"}, {UNARY_ADD, "++"},
     {UNARY_SUB, "--"}, {MOV, "="}, {AND, "&"}, {OR, "|"},
     {Equal, "=="}, {NotEqual, "!="}, {Less, "<"}, {Greater, ">"},
     {LessEqual, "<="}, {GreaterEqual, ">="}
 };
-const std::unordered_map<eSymbolName, std::string> STRING_SYMOL_NAMES = {
+const std::unordered_map<eSymbolName, std::string> STRING_SYMOL_NAMES = 
+{
     {eSymbolName::Character, "Character"},
     {eSymbolName::Integer, "Integer"},
     {eSymbolName::Boolean, "Boolean"},
@@ -95,17 +100,18 @@ constexpr char INDENT = '-';
 class Node 
 {
 public:
-    Node(const eSymbolName name) : mName(name) {}
-    Node(const eSymbolName name, const std::string& value) : mName(name), mValue(value) {}
-	
+    Node(const eSymbolName);
+    Node(const eSymbolName, const std::string&);
+    virtual ~Node() = default;
+
     std::string GetValue() const;
     eSymbolName GetName() const;
     
+    virtual eDataType CheckWellFormedness(ScopedSymbolTable*) const;
     virtual void Print(const int) const;
     virtual bool Empty() const;
+	virtual void Destroy();
 
-    
-    virtual eDataType CheckWellFormedness(ScopedSymbolTable*) const;
 private:
     eSymbolName mName;
     std::string mValue;

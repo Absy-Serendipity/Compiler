@@ -1,14 +1,15 @@
 #pragma once
 #include "Node.h"
 
-class Condition : public Node
+class Condition final: public Node
 {
 public:
-    Condition(Node* conditionExpression, Node* logicExpression) :
-        Node(eSymbolName::COND), mConditionExpression(conditionExpression), mLogicExpression(logicExpression) {}
+    Condition(Node*, Node*);
+    ~Condition() override = default;
 
     void Print(const int) const override;
     eDataType CheckWellFormedness(ScopedSymbolTable*) const override;
+	void Destroy() override;
 
 private:
     Node* mConditionExpression;

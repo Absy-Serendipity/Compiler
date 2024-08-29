@@ -6,7 +6,8 @@
 
 constexpr unsigned int WORD_SIZE = 4;
 
-const std::unordered_map<eDataType, std::string> STRING_DATA_TYPES = {
+const std::unordered_map<eDataType, std::string> STRING_DATA_TYPES = 
+{
 	{eDataType::Int, "int"},
 	{eDataType::Char, "char"},
 	{eDataType::Bool, "bool"},
@@ -24,14 +25,14 @@ private:
 	} SymbolTableEntry;
 
 public:
-	ScopedSymbolTable(ScopedSymbolTable* outerSymbolTable);
+	ScopedSymbolTable(ScopedSymbolTable*);
+	~ScopedSymbolTable();
 	void AddSymbol(const std::string&, const eDataType);
 	const eDataType GetDataType(const std::string&) const;
 
-
 	void Print() const;
-private:
 
+private:
 	unsigned int GetOffset() const;
 
 private:

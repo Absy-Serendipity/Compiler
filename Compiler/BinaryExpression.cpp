@@ -1,9 +1,19 @@
 #include "BinaryExpression.h"
 
 
+BinaryExpression::BinaryExpression(const eSymbolName symbol, Node* leftOperand, const std::string& op, Node* rightOperand) 
+    : Node(symbol)
+    , mLeftOperand(leftOperand)
+    , mOperator(OPERATORS.at(op))
+    , mRightOperand(rightOperand) 
+{}
+
+
+
 void BinaryExpression::Print(const int indentCount) const
 {
-    for (int i = 0; i < indentCount; i++) {
+    for (int i = 0; i < indentCount; i++) 
+    {
         std::cout << INDENT;
     }
     std::cout << STRING_SYMOL_NAMES.at(GetName());
@@ -17,8 +27,10 @@ eDataType BinaryExpression::CheckWellFormedness(ScopedSymbolTable* localSymbolTa
 {
     const eDataType leftType = mLeftOperand->CheckWellFormedness(localSymbolTable);
     const eDataType rightType = mRightOperand->CheckWellFormedness(localSymbolTable);
-    if (leftType == rightType) {
-        if (COMPARISON_OPERATORS.find(mOperator) != COMPARISON_OPERATORS.end()) {
+    if (leftType == rightType) 
+    {
+        if (COMPARISON_OPERATORS.find(mOperator) != COMPARISON_OPERATORS.end()) 
+        {
             return eDataType::Bool;
         }
         return leftType;
@@ -28,6 +40,15 @@ eDataType BinaryExpression::CheckWellFormedness(ScopedSymbolTable* localSymbolTa
 }
 
 
-const std::unordered_set<eOperator> BinaryExpression::COMPARISON_OPERATORS = {
+const std::unordered_set<eOperator> BinaryExpression::COMPARISON_OPERATORS = 
+{
     Equal, NotEqual, Less, Greater, LessEqual, GreaterEqual
 };
+
+
+void BinaryExpression::Destroy()
+{
+    delete mLeftOperand;
+    delete mRightOperand;
+    delete this;
+}
