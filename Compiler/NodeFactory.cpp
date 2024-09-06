@@ -21,7 +21,7 @@ Node* NodeFactory::createCode(eSymbolName lhs, const std::vector<eSymbolName>& r
 			code->AddDeclaration(child);
 		}
 		else if (child->GetName() == eSymbolName::CODE) {
-			code->AddDeclarations(dynamic_cast<Code*>(child)->GetDeclarations());
+			code->AddDeclarations(static_cast<Code*>(child)->GetDeclarations());
 			delete child;
 		}
 	}
@@ -86,7 +86,7 @@ Node* NodeFactory::createVDecl(eSymbolName lhs, const std::vector<eSymbolName>& 
 		vDecl = new VDeclaration(type->GetValue(), identifier->GetValue(), std::nullopt);
 	}
 	if (secondNode->GetName() == eSymbolName::ASSIGN) {
-		Assign* assignStatement = dynamic_cast<Assign*>(secondNode);
+		Assign* assignStatement = static_cast<Assign*>(secondNode);
 		vDecl = new VDeclaration(type->GetValue(), assignStatement->GetValue(), assignStatement->GetExpression());
 	}
 
@@ -186,7 +186,7 @@ Node* NodeFactory::createBlock(eSymbolName lhs, const std::vector<eSymbolName>& 
 			delete child;
 		}
 		else if (child->GetName() == eSymbolName::BLOCK) {
-			block->AddStatements(dynamic_cast<Block*>(child)->GetStatements());
+			block->AddStatements(static_cast<Block*>(child)->GetStatements());
 			delete child;
 		}
 		else{
